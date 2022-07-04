@@ -50,3 +50,8 @@ pip3 install peewee
 ```
 
 ¡Listo! Todo debería funcionar.
+
+También puede las dependencias con el archivo requirements.txt
+```sh
+pip3 install -r requirements.txt
+```
