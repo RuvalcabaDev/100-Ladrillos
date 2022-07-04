@@ -1,15 +1,5 @@
 import pymysql
 import os
-from fastapi import FastAPI
-from database import User
-from database import Property
-from database import ShoppingCart
-from database import Brick
-from database import OrderDetail
-from database import PaymentMethods
-from database import Transaction
-
-app = FastAPI()
 
 
 class ConnectionMySQL:
@@ -30,16 +20,3 @@ class ConnectionMySQL:
     def mysql_close(self):
         print("Conexión cerrada!")
         self.connection.close()
-
-
-@app.on_event('startup')
-def startup():
-    if ConnectionMySQL.mysql_close():
-        ConnectionMySQL.mysql_connect()
-    ConnectionMySQL.create_tables([User, Property, ShoppingCart, Brick, OrderDetail, PaymentMethods, Transaction])
-
-
-@app.on_event('shutdown')
-def shutdown():
-    if not ConnectionMySQL.mysql_close():
-        ConnectionMySQL.mysql_close()

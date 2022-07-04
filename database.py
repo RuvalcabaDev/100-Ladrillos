@@ -8,7 +8,7 @@ from Connections import ConnectionMySQL
 from datetime import datetime
 
 
-database_connection = ConnectionMySQL()
+database = ConnectionMySQL()
 
 
 class User(Model):
@@ -20,7 +20,7 @@ class User(Model):
         return self.email
 
     class Meta:
-        database = database_connection
+        database = database.mysql_connect()
         table_name = 'users'
 
 
@@ -35,7 +35,7 @@ class Property(Model):
         return self.name
 
     class Meta:
-        database = database_connection
+        database = database.mysql_connect()
         table_name = 'properties'
 
 
@@ -48,7 +48,7 @@ class ShoppingCart(Model):
         return self.total
 
     class Meta:
-        database = database_connection
+        database = database
         table_name = 'shopping_cart'
 
 
@@ -61,7 +61,7 @@ class Brick(Model):
         return self.price
 
     class Meta:
-        database = database_connection
+        database = database
         table_name = 'bricks'
 
 
@@ -75,7 +75,7 @@ class OrderDetail(Model):
         return self.price
 
     class Meta:
-        database = database_connection
+        database = database
         table_name = 'order_detail'
 
 
@@ -88,7 +88,7 @@ class PaymentMethods(Model):
         return self.name
 
     class Meta:
-        database = database_connection
+        database = database
         table_name = 'payment_methods'
 
 
@@ -102,5 +102,5 @@ class Transaction(Model):
         return self.total_paid
 
     class Meta:
-        database = database_connection
+        database = database
         table_name = 'transactions'
